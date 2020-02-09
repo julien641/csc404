@@ -60,7 +60,6 @@ console.log(compGPA(x));
 });
 }
 
-function datainput(){
 
 
 
