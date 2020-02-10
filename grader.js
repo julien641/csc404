@@ -3,7 +3,7 @@ module.exports = {
         var sum = 0;
         var totalclass = 0;
 
-        for (var i = 0; i < array.length; i++) {
+        for (i in array) {
 
 
         if (array[i] >= 93 || array[i].toUpperCase() == "A") {
@@ -47,12 +47,9 @@ module.exports = {
     },
     //TODO
     
-    student: function (name, CSC141, CSC142, CSC240, CSC241, GPA) {
+    student: function (name, grades, GPA) {
         this.name = name.toString();
-        this.CSC141 = CSC141;
-        this.CSC142 = CSC142;
-        this.CSC240 = CSC240;
-        this.CSC241 = CSC241;
+        this.grades=grades;
         this.GPA = GPA;
     },
     postresult:function(threshhold, studentarray){

@@ -1,16 +1,15 @@
-var prompt = require("prompt-async");
+
 var grader = require('./grader');
 var namescem = {
     properties: {
         name: {
-            description: 'Enter Name',
+            description: 'Enter Student Name',
             type: 'string',
             required: true
         }
     }
 
 }
-
 var schema = {
     properties: {
         CSC141: {
@@ -47,28 +46,24 @@ var schema = {
             hidden: false, // If true, characters entered will either not be output to console or will be outputed using the `replace` string.                      // If `hidden` is set it will replace each hidden character with the specified string.
             // Default value to use if no value is entered.
             required: true // If true, value entered must be non-empty.
-        },
-        postresult: {
-            description: ' Type y to print out GPAs',
-            type: 'string',
-            message: 'The string inputed is not Y or N',
-            hidden: false,
-            required: true,
-            pattern: /(?<!.)(y)(?!.)|(?<!.)(n)(?!.)/gi
-
-        },
-        entermore: {
-            description: 'Enter Y to continue and N to exit',
-            type: 'string',
-            message: 'The string inputed is not Y or N',
-            hidden: false,
-            required: true,
-            pattern: /(?<!.)(y)(?!.)|(?<!.)(n)(?!.)/gi
         }
 
-
-
     }
+
+}
+var scemenu = {
+    properties: {
+        menu: {
+            description: ' Type 1 to add a student or type 2 to print gpa or type 0 to exit',
+            type: 'string',
+            message: 'The string inputed is not 1,2 or 3',
+            hidden: false,
+            required: true,
+            pattern: /(?<!.)(1)(?!.)|(?<!.)(2)(?!.)|(?<!.)(0)(?!.)/gi
+
+        }
+    }
+
 }
 var schemathresh = {
     properties: {
@@ -85,51 +80,79 @@ var schemathresh = {
 
 
 }
+var studentarray=[];
+async function inputdata() {
+    var prompt = require("prompt-async");
+    prompt.start();
+    var t = true;
+
+    var {
+        name
+    } = await prompt.get(namescem);
+    var grades = {
+        CSC141,
+        CSC142,
+        CSC240,
+        CSC241
+    } = await prompt.get(schema);
+
+    if (t == true) {
+        for (x in grades) {
+
+            if (!await grades[x].match(/((?<!.)([0-9]{1,3}(?!.))|(?<!.)a-(?!.)|((?<!.)a(?!.))|((?<!.)b\+(?!.))|((?<!.)b-(?!.))|((?<!.)b(?!.))|((?<!.)c\+(?!.))|((?<!.)c-(?!.))|((?<!.)c(?!.))|((?<!.)d\+(?!.))|((?<!.)d-(?!.))|((?<!.)f(?!.))|((?<!.)d(?!.))|((?<!.)IP(?!.))|((?<!.)NG(?!.))|((?<!.)W)(?!.))|((?<!.)Y)(?!.)|((?<!.)AU)(?!.)|((?<!.)M)(?!.)/gi)) {
+                t = false;
+                break;
+            }
+        }
+    } else {
+        console.log("Incorrect grade reenter");
+    }
+
+    var GPA = await grader.compGPA(grades);
+    await studentarray.push(new grader.student(name.toString(), grades, GPA));
+
+
+
+}
+
+async function postresultmenu() {
+    var prompt = require("prompt-async");
+    prompt.start();
+    var tr = {
+        threshhold
+    } = await prompt.get(schemathresh);
+
+
+    await grader.postresult(tr.threshhold, studentarray);
+
+}
+
+
 var val = false;
 program();
 async function program() {
+    var prompt = require("prompt-async");
     prompt.start();
     var studentarray = [];
     do {
-        var {
-            name
-        } = await prompt.get(namescem);
-        var x = {
-            CSC141,
-            CSC142,
-            CSC240,
-            CSC241,
-            entermore,
-            postresult
-        } = await prompt.get(schema);
+        var x={}
 
+         x={
+            menu
+        } = await prompt.get(scemenu);
 
-
-        var array = [x.CSC141, x.CSC142, x.CSC240, x.CSC241];
-        var t = true;
-        for (var i = 0; i < array.length; i++) {
-
-            if (!await array[i].match(/((?<!.)([0-9]{1,3}(?!.))|(?<!.)a-(?!.)|((?<!.)a(?!.))|((?<!.)b\+(?!.))|((?<!.)b-(?!.))|((?<!.)b(?!.))|((?<!.)c\+(?!.))|((?<!.)c-(?!.))|((?<!.)c(?!.))|((?<!.)d\+(?!.))|((?<!.)d-(?!.))|((?<!.)f(?!.))|((?<!.)d(?!.))|((?<!.)IP(?!.))|((?<!.)NG(?!.))|((?<!.)W)(?!.))|((?<!.)Y)(?!.)|((?<!.)AU)(?!.)|((?<!.)M)(?!.)/gi)) {
-                t = false;
-
-            }
+        switch (menu) {
+            case "1":
+                await inputdata();
+                break;
+            case "2":
+               await postresultmenu();
+                break;
+            case "0":
+                break;
 
         }
-        if (t == true) {
-            var GPA = await grader.compGPA(array);
-            await studentarray.push(new grader.student(name.toString(), CSC141, CSC142, CSC240, CSC241, GPA));
 
-            if (postresult.toUpperCase() == "Y") {
-                var tr = {
-                    threshhold
-                } = await prompt.get(schemathresh);
-                await grader.postresult(tr.threshhold, studentarray);
-            }
-        } else {
-            console.log("Incorrect grade reenter");
-
-        }
-    } while (x.entermore.toUpperCase() == "Y" || postresult.toUpperCase() == "Y");
-
+    } while (menu != "0")
 
 }
