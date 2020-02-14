@@ -15,35 +15,35 @@ var schema = {
         CSC141: {
             description: 'Enter your grade for CSC141', // Prompt displayed to the user. If not supplied name will be used.
             type: 'string', // Specify the type of input to expect.
-            pattern: /((?<!.)([0-9]{1,3}(?!.))|(?<!.)a-(?!.)|((?<!.)a(?!.))|((?<!.)b\+(?!.))|((?<!.)b-(?!.))|((?<!.)b(?!.))|((?<!.)c\+(?!.))|((?<!.)c-(?!.))|((?<!.)c(?!.))|((?<!.)d\+(?!.))|((?<!.)d-(?!.))|((?<!.)f(?!.))|((?<!.)d(?!.))|((?<!.)IP(?!.))|((?<!.)NG(?!.))|((?<!.)W)(?!.))|((?<!.)Y)(?!.)|((?<!.)AU)(?!.)|((?<!.)M)(?!.)/gi,
-            message: 'Your grade must be A B+ B B- C+ C C- D+ D D- F 0-100 IP NG W Y AU M', // Warning message to display if validation fails.
+            pattern: /(?<!.)a-(?!.)|((?<!.)a(?!.))|((?<!.)b\+(?!.))|((?<!.)b-(?!.))|((?<!.)b(?!.))|((?<!.)c\+(?!.))|((?<!.)c-(?!.))|((?<!.)c(?!.))|((?<!.)d\+(?!.))|((?<!.)d-(?!.))|((?<!.)f(?!.))|((?<!.)d(?!.))|((?<!.)IP(?!.))|((?<!.)NG(?!.))|((?<!.)W(?!.))|(?<!.)Y(?!.)|((?<!.)AU(?!.))|((?<!.)M(?!.))/gi,
+            message: 'Your grade must be A B+ B B- C+ C C- D+ D D- F IP NG W Y AU M', // Warning message to display if validation fails.
             hidden: false, // If true, characters entered will either not be output to console or will be outputed using the `replace` string.                      // If `hidden` is set it will replace each hidden character with the specified string.
             required: true // If true, value entered must be non-empty.
         },
         CSC142: {
             description: 'Enter your grade for CSC142', // Prompt displayed to the user. If not supplied name will be used.
             type: 'string', // Specify the type of input to expect.
-            pattern: /((?<!.)([0-9]{1,3}(?!.))|(?<!.)a-(?!.)|((?<!.)a(?!.))|((?<!.)b\+(?!.))|((?<!.)b-(?!.))|((?<!.)b(?!.))|((?<!.)c\+(?!.))|((?<!.)c-(?!.))|((?<!.)c(?!.))|((?<!.)d\+(?!.))|((?<!.)d-(?!.))|((?<!.)f(?!.))|((?<!.)d(?!.))|((?<!.)IP(?!.))|((?<!.)NG(?!.))|((?<!.)W)(?!.))|((?<!.)Y)(?!.)|((?<!.)AU)(?!.)|((?<!.)M)(?!.)/gi,
-            message: 'Your grade must be A B+ B B- C+ C C- D+ D D- F 0-100 IP NG W Y AU M', // Warning message to display if validation fails.
-            hidden: false, // If true, characters entered will either not be output to console or will be outputed using the `replace` string.                      // If `hidden` is set it will replace each hidden character with the specified string.
+            pattern: /(?<!.)a-(?!.)|((?<!.)a(?!.))|((?<!.)b\+(?!.))|((?<!.)b-(?!.))|((?<!.)b(?!.))|((?<!.)c\+(?!.))|((?<!.)c-(?!.))|((?<!.)c(?!.))|((?<!.)d\+(?!.))|((?<!.)d-(?!.))|((?<!.)f(?!.))|((?<!.)d(?!.))|((?<!.)IP(?!.))|((?<!.)NG(?!.))|((?<!.)W(?!.))|(?<!.)Y(?!.)|((?<!.)AU(?!.))|((?<!.)M(?!.))/gi,
+            message: 'Your grade must be A B+ B B- C+ C C- D+ D D- F IP NG W Y AU M', // Warning message to display if validation fails.
+        hidden: false, // If true, characters entered will either not be output to console or will be outputed using the `replace` string.                      // If `hidden` is set it will replace each hidden character with the specified string.
             // Default value to use if no value is entered.
             required: true // If true, value entered must be non-empty.
         },
         CSC240: {
             description: 'Enter your grade for CSC240', // Prompt displayed to the user. If not supplied name will be used.
             type: 'string', // Specify the type of input to expect.
-            pattern: /((?<!.)([0-9]{1,3}(?!.))|(?<!.)a-(?!.)|((?<!.)a(?!.))|((?<!.)b\+(?!.))|((?<!.)b-(?!.))|((?<!.)b(?!.))|((?<!.)c\+(?!.))|((?<!.)c-(?!.))|((?<!.)c(?!.))|((?<!.)d\+(?!.))|((?<!.)d-(?!.))|((?<!.)f(?!.))|((?<!.)d(?!.))|((?<!.)IP(?!.))|((?<!.)NG(?!.))|((?<!.)W)(?!.))|((?<!.)Y)(?!.)|((?<!.)AU)(?!.)|((?<!.)M)(?!.)/gi, // Regular expression that input must be valid against.
-            message: 'Your grade must be A B+ B B- C+ C C- D+ D D- F 0-100 IP NG W Y AU M', // Warning message to display if validation fails.
-            hidden: false, // If true, characters entered will either not be output to console or will be outputed using the `replace` string.                      // If `hidden` is set it will replace each hidden character with the specified string.
+            pattern: /(?<!.)a-(?!.)|((?<!.)a(?!.))|((?<!.)b\+(?!.))|((?<!.)b-(?!.))|((?<!.)b(?!.))|((?<!.)c\+(?!.))|((?<!.)c-(?!.))|((?<!.)c(?!.))|((?<!.)d\+(?!.))|((?<!.)d-(?!.))|((?<!.)f(?!.))|((?<!.)d(?!.))|((?<!.)IP(?!.))|((?<!.)NG(?!.))|((?<!.)W(?!.))|(?<!.)Y(?!.)|((?<!.)AU(?!.))|((?<!.)M(?!.))/gi,
+            message: 'Your grade must be A B+ B B- C+ C C- D+ D D- F IP NG W Y AU M', // Warning message to display if validation fails.
+          hidden: false, // If true, characters entered will either not be output to console or will be outputed using the `replace` string.                      // If `hidden` is set it will replace each hidden character with the specified string.
             // Default value to use if no value is entered.
             required: true // If true, value entered must be non-empty.
         },
         CSC241: {
             description: 'Enter your grade for CSC241', // Prompt displayed to the user. If not supplied name will be used.
             type: 'string', // Specify the type of input to expect.
-            pattern: /((?<!.)([0-9]{1,3}(?!.))|(?<!.)a-(?!.)|((?<!.)a(?!.))|((?<!.)b\+(?!.))|((?<!.)b-(?!.))|((?<!.)b(?!.))|((?<!.)c\+(?!.))|((?<!.)c-(?!.))|((?<!.)c(?!.))|((?<!.)d\+(?!.))|((?<!.)d-(?!.))|((?<!.)f(?!.))|((?<!.)d(?!.))|((?<!.)IP(?!.))|((?<!.)NG(?!.))|((?<!.)W)(?!.))|((?<!.)Y)(?!.)|((?<!.)AU)(?!.)|((?<!.)M)(?!.)/gi, // Regular expression that input must be valid against.
-            message: 'Your grade must be A B+ B B- C+ C C- D+ D D- F 0-100 IP NG W Y AU M', // Warning message to display if validation fails.
-            hidden: false, // If true, characters entered will either not be output to console or will be outputed using the `replace` string.                      // If `hidden` is set it will replace each hidden character with the specified string.
+            pattern: /(?<!.)a-(?!.)|((?<!.)a(?!.))|((?<!.)b\+(?!.))|((?<!.)b-(?!.))|((?<!.)b(?!.))|((?<!.)c\+(?!.))|((?<!.)c-(?!.))|((?<!.)c(?!.))|((?<!.)d\+(?!.))|((?<!.)d-(?!.))|((?<!.)f(?!.))|((?<!.)d(?!.))|((?<!.)IP(?!.))|((?<!.)NG(?!.))|((?<!.)W(?!.))|(?<!.)Y(?!.)|((?<!.)AU(?!.))|((?<!.)M(?!.))/gi,
+            message: 'Your grade must be A B+ B B- C+ C C- D+ D D- F IP NG W Y AU M', // Warning message to display if validation fails.
+         hidden: false, // If true, characters entered will either not be output to console or will be outputed using the `replace` string.                      // If `hidden` is set it will replace each hidden character with the specified string.
             // Default value to use if no value is entered.
             required: true // If true, value entered must be non-empty.
         }
@@ -94,7 +94,7 @@ async function inputdata() {
         CSC142,
         CSC240,
         CSC241
-    } = await prompt.get(schema);
+    } =  await prompt.get(schema);
 
     if (t == true) {
         for (x in grades) {
@@ -133,7 +133,7 @@ program();
 async function program() {
     var prompt = require("prompt-async");
     prompt.start();
-    var studentarray = [];
+
     do {
         var x={}
 
