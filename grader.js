@@ -4,14 +4,14 @@
 
 
 */
-
+"use strict"
 module.exports = {
     compGPA: function(array) {
         var sum = 0;
         var totalclass = 0;
-
+var i;
         for (i in array) {
-            console.log(array[i]);
+ 
             if (array[i].toUpperCase() == "A") {
                 sum += 4.00;
                 totalclass++;
@@ -61,11 +61,10 @@ module.exports = {
         this.GPA = GPA;
     },
     postresult:function(threshhold, studentarray){
-        console.log("The student that has a higher or equal GPA of: " + threshhold);
+        console.log(`The student that has a higher or equal GPA of:${threshhold}`);
         for (var i = 0; i < studentarray.length; i++) {
             if (studentarray[i].GPA >= threshhold) {
-                console.log("hello");
-                console.log("Student Name: " + studentarray[i].name.toString() + " GPA: " + studentarray[i].GPA.toString());
+                console.log(`Student Name: ${studentarray[i].name.toString()}  GPA:${studentarray[i].GPA.toString()}`);
             }
         }
 

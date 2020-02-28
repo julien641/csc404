@@ -1,3 +1,5 @@
+"use strict"
+var prompt = require("prompt-async");
 
 var grader = require('./grader');
 var namescem = {
@@ -82,10 +84,10 @@ var schemathresh = {
 }
 var studentarray=[];
 async function inputdata() {
-    var prompt = require("prompt-async");
+
     prompt.start();
     var t = true;
-
+var CSC141,CSC142,CSC240,CSC241;
     var {
         name
     } = await prompt.get(namescem);
@@ -95,6 +97,7 @@ async function inputdata() {
         CSC240,
         CSC241
     } =  await prompt.get(schema);
+var x;
 
     if (t == true) {
         for (x in grades) {
@@ -110,18 +113,18 @@ async function inputdata() {
 
     var GPA = await grader.compGPA(grades);
     await studentarray.push(new grader.student(name.toString(), grades, GPA));
-
+console.log(`Student ${name} entered with Incomplete GPA of :${GPA}`);
 
 
 }
 
 async function postresultmenu() {
-    var prompt = require("prompt-async");
+
     prompt.start();
+    var threshhold;
     var tr = {
         threshhold
     } = await prompt.get(schemathresh);
-
 
     await grader.postresult(tr.threshhold, studentarray);
 
@@ -131,13 +134,22 @@ async function postresultmenu() {
 var val = false;
 program();
 async function program() {
-    var prompt = require("prompt-async");
-    prompt.start();
 
+
+
+/*
+    (async()=>{const response =await prompts(scemenu);
+    console.log(response);
+    
+    
+    }
+*/
     do {
-        var x={}
+        
+var menu;
 
-         x={
+prompt.start();
+        var x={
             menu
         } = await prompt.get(scemenu);
 
@@ -152,7 +164,6 @@ async function program() {
                 break;
 
         }
-
     } while (menu != "0")
 
 }
