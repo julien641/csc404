@@ -109,7 +109,7 @@ var x;
     }
 
     var GPA = await grader.compGPA(grades);
-    if(GPA ==true){
+    if(GPA !=false){
     await studentarray.push(new grader.student(name.toString(), grades, GPA));
 console.log(`Student ${name} entered with Incomplete GPA of :${GPA}`);
     }else{
